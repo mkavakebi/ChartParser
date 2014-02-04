@@ -1,0 +1,12 @@
+CHART:
+$input = 'in which box did he put the book';
+$input = 'jill saw the dog';
+$input = 'he see the book';
+
+
+
+ATN:
+'he saw the book' 
+'he see the book'
+which box did he see
+did he see the book

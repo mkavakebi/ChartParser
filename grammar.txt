@@ -1,0 +1,28 @@
+r1(S SEM (?semvp ?semnp))->(NP SEM ?semnp)(VP SEM ?semvp)
+r2(VP VAR ?v SEM (^ a2 (?semv ?v a2)))->(V SUBCAT _none SEM ?semv)
+r3(VP VAR ?v SEM (^ a3 (?semv ?v a3 ?semnp)))->(V SUBCAT _np SEM ?semv)(NP SEM ?semnp)
+r4(NP WH-VAR ?v SEM (PRO ?v ?sempro))->(PRO SEM ?sempro)
+r5(NP VAR ?v SEM (NAME ?v ?semname))->(NAME SEM ?semname)
+r6(NP VAR ?v SEM <?semart ?v (?semcnp ?v)>)->(ART SEM ?semart)(CNP SEM ?semcnp)
+r7(CNP SEM ?semn)->(N SEM ?semn)
+
+r8(PP PRED + SEM (^ x (?semp x ?semnp)))->(P SEM ?semp)(NP SEM ?semnp)
+r9(PP PRED - PFORM ?pf SEM ?semnp)->(P ROOT ?pf)(NP SEM ?semnp)
+r10(VP VAR ?v SEM (^ ag1 (&(?semvp ag1)(?sempp ?v))))->(VP ?semvp)(PP PRED + SEM ?sempp)
+r11(VP VAR ?v SEM (^ ag2 (?semv ?v ag2 ?sempp)))->(V SUBCAT _np_pp:on SEM ?semv)(PP PRED - PFORM on SEM ?sempp)
+r12(VP SEM (^ a1 (?semaux (?semvp a1))))->(AUX SUBCAT ?v SEM ?semaux)(VP VFORM ?v SEM ?semvp)
+r13(CNP SEM (^ n1 (& (?semcnp n1)(?sempp n1))))->(CNP SEM ?semcnp)(PP PRED + SEM ?sempp)
+
+r14(S INV - SEM (WH-query ?sems))->(NP WH Q AGR ?a SEM ?semnp)(S INV + SEM ?sems GAP (NP~AGR~?a~SEM~?semnp))
+r15(S AGR ?a INV + GAP ?g SEM (?semaux (?semvp ?semnp))->(AUX AGR ?a SUBCAT ?subcat SEM ?semaux)(NP AGR ?a GAP - SEM ?semnp)(VP VFORM ?subcat AGR ?a GAP ?g SEM ?semvp)
+r16(NP WH Q VAR ?v SEM <WH ?v (?sempro ?v)>)->(PRO WH Q SEM ?smepro)
+#put '#' to Comment
+
+r20(VP VFORM ?vf GAP ?g VAR p1 SEM (^ a3 (& (?semv p1 a3 ?semnp) (?sempp p1))))->(V VFORM ?vf SEM ?semv SUBCAT _np_pp)(NP GAP - SEM ?semnp)(PP GAP ?g SEM ?sempp)
+
+r21(S INV - SEM (WH-QUERY (?sems)))->(PP SEM ?sempp)(S INV + SEM ?sems GAP (PP~SEM~?sempq))
+#5.7
+r22(DET WH ?w SEM ?sem)->(QDET WH ?w SEM ?sem)
+r23(NP VAR ?b1 WH ?w SEM <?semdet ?b1 ?semcnp> AGR ?a)->(DET WH ?w AGR ?a SEM ?semdet)(CNP AGR ?a SEM ?semcnp)
+#r24(CNP VAR ?b1 WH ?w SEM <?semdet ?b1 ?semcnp> AGR ?a)->(DET WH ?w AGR ?a SEM ?semdet)(CNP AGR ?a SEM ?semcnp)
+#r25(REL WH R SEM (^ v (?sems) AGR ?a)->(NP WH R AGR ?a SEM ?semdet)(S INV + SEM ?sems GAP (NP~AGR~?a~SEM~?semnp))
